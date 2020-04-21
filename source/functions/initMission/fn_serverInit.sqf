@@ -202,6 +202,10 @@ addMissionEventHandler ["EntityRespawned", {
             publicVariable "game_master";
         };
     };
+
+    //if (!(isPlayer _entity)) then {
+
+    //};
     true;
 }];
 
