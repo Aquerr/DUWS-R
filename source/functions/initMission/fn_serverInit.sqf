@@ -209,6 +209,19 @@ addMissionEventHandler ["EntityRespawned", {
     true;
 }];
 
+//Event that will give FOB support command option to new leaders if it is available.
+addMissionEventHandler ["TeamSwitch", {
+	params ["_previousUnit", "_newUnit"];
+	if(zoneundercontrolblu > 1) then {
+	    if ((isPlayer _newUnit) and (leader group _newUnit == leader _newUnit)) then {
+            _slot_name = vehicleVarName _entity;
+            if(_slot_name in game_master) then {
+                [_newUnit, "fob_support"] remoteExecCall ["BIS_fnc_addCommMenuItem", 0, true];
+            };
+        };
+	};
+}];
+
 addMissionEventHandler ["HandleDisconnect", {
     params ["_unit", "_id", "_uid", "_name"];
     if (leader group _unit == leader _unit) then {
