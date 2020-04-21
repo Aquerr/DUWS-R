@@ -103,9 +103,9 @@ Blufor_Ammobox_Contents =
 // Blufor Purchasable Vehicles
 // Format: ["vehicle", cost]
 blufor_vehicle_array = [
-    [5, "B_LSV_01_unarmed_F"],
-    [13, "B_LSV_01_armed_F"],
-    [16,"B_LSV_01_AT_F"],
+    [4, "B_G_Offroad_01_F"],
+    [10, "B_G_Offroad_01_armed_F"],
+    [18, "B_G_Offroad_01_AT_F"],
     [5, "B_MRAP_01_F"],
     [18, "B_MRAP_01_hmg_F"],
     [25, "B_MRAP_01_gmg_F"],

@@ -102,6 +102,8 @@ class CfgFunctions
             // [] spawn duws_fnc_autoSave
             class groupReset {};
             // [] call duws_fnc_groupReset
+            class removeDeadEntity;
+            // [unit] spawn duws_fnc_removeDeadEntity
         };
 
         class WARCOM

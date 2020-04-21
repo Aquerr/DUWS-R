@@ -28,6 +28,8 @@ if (isMultiplayer) then {
     // Get the variables from the parameters lobby
     _revive_activated = ["Revive", 1] call BIS_fnc_getParamValue;
     DUWSMP_CP_death_cost = ["DeathPenalty", 1] call BIS_fnc_getParamValue;
+    DUWS_Dead_Units_Removal_Time = ["DeadUnitsRemovalTime", 1200] call BIS_fnc_getParamValue;
+    DUWS_Mission_Cooldown_Time = ["MissionCooldownTime", 60] call BIS_fnc_getParamValue;
     //staminaEnabled = ["Stamina", 0] call BIS_fnc_getParamValue;
 
     /*if(staminaEnabled == 0) then {

@@ -3,9 +3,9 @@ _array_of_missions = [];
 _allFound = false;
 _counter = 0;
 
-if (isnil ("Mission_timeout_request")) then {Mission_timeout_request = true;};
+if (isNil ("Mission_timeout_request")) then {Mission_timeout_request = true;};
 if (!Mission_timeout_request) exitWith {[west, "PAPA_BEAR"] SideChat "We don't have any other missions for you right now.";};
-if (!((vehiclevarname player) in game_master)) exitWith {hint "Only the host can request side missions for now"};
+if (!((vehicleVarName player) in game_master)) exitWith {hint "Only the host can request side missions for now"};
 
 startLoadingScreen ["Loading zones..."];
 _kibot_pos_array_missionPos = [[-99999,-99999,-99999]];
@@ -21,18 +21,18 @@ while {_counter < 6;} do {
     _kibot_distances_array = [];
 
     // for each element of the array of positions
-    for [{_t=1}, {_t<=count _kibot_pos_array_missionPos}, {_t=_t+1}] do 
-    {                                         
+    for [{_t=1}, {_t<=count _kibot_pos_array_missionPos}, {_t=_t+1}] do
+    {
         // get the index of the element
         _kibot_pos_array_missionPos_index = _t-1;
 
         //compare the distance of the given pos with other pos in pos array and add it into an array of all the compared distance --> an array of distances is obtained
-        _kibot_distances_array = _kibot_distances_array +[(_kibot_pos_array_missionPos select _kibot_pos_array_missionPos_index) distance (_foundSafePos)]; 
+        _kibot_distances_array = _kibot_distances_array +[(_kibot_pos_array_missionPos select _kibot_pos_array_missionPos_index) distance (_foundSafePos)];
     };
 
     // for each element of the array of distances we just generated...
     for [{_t=1}, {_t<=count _kibot_distances_array}, {_t=_t+1}] do
-    {                                           
+    {
         // get the index of the tested element
         _kibot_distances_array_index = _t-1;
 
@@ -42,7 +42,7 @@ while {_counter < 6;} do {
         // check the distances contained the distances array 1 by 1. If a distance is inferior to defined value, this is a no go.
         if (_check < 1500) then {
             // If no zone is under 1500 meters, tell it to this variable;
-            _found_dist_away = false;   
+            _found_dist_away = false;
         }
     };
 
@@ -63,7 +63,7 @@ while {_counter < 6;} do {
                 _radius = 300;
                 MissionNameCase0 = [0] call duws_fnc_random_name;
                 PosOfCase0Mission = _foundSafepos;
-    
+
                 _missionArray = [
                     [(_foundSafepos select 0)+(random _radius)-(random _radius),(_foundSafepos select 1)+(random _radius)-(random _radius)],
                     {_handle = [PosOfCase0Mission] spawn duws_fnc_rescue_mission; _handle = [] spawn duws_fnc_missionTimer},
@@ -100,7 +100,7 @@ while {_counter < 6;} do {
                 _radius = 300;
                 MissionNameCase2 = [0] call duws_fnc_random_name;
                 PosOfCase2Mission = _foundSafepos;
-    
+
                 _missionArray = [
                     [(_foundSafepos select 0)+(random _radius)-(random _radius),(_foundSafepos select 1)+(random _radius)-(random _radius)],
                     {_handle = [PosOfCase2Mission] spawn duws_fnc_target_mission; _handle = [] spawn duws_fnc_missionTimer},
@@ -118,7 +118,7 @@ while {_counter < 6;} do {
                 _radius = 300;
                 MissionNameCase3 = [0] call duws_fnc_random_name;
                 PosOfCase3Mission = _foundSafepos;
-    
+
                 _missionArray = [
                     [(_foundSafepos select 0)+(random _radius)-(random _radius),(_foundSafepos select 1)+(random _radius)-(random _radius)],
                     {_handle = [PosOfCase3Mission] spawn duws_fnc_destroy_mission; _handle = [] spawn duws_fnc_missionTimer},
@@ -137,13 +137,13 @@ while {_counter < 6;} do {
                 _radius = 300;
                 MissionNameCase4 = [0] call duws_fnc_random_name;
                 PosOfCase4Mission = _foundSafepos;
-    
+
                 _missionArray = [[(_foundSafepos select 0)+(random _radius)-(random _radius),(_foundSafepos select 1)+(random _radius)-(random _radius)],
                     {_handle = [PosOfCase4Mission] spawn duws_fnc_pilot_mission; _handle = [] spawn duws_fnc_missionTimer},
                     MissionNameCase4,
                     "One of our aircraft has been downed somewhere around this position. You must find the pilot and bring it back to base safely.",
                     "",
-                    "\a3\ui_f\data\gui\cfg\hints\Direction_ca.paa", 
+                    "\a3\ui_f\data\gui\cfg\hints\Direction_ca.paa",
                     1,
                     []
                 ];
@@ -155,7 +155,7 @@ while {_counter < 6;} do {
                 _radius = 300;
                 MissionNameCase5 = [0] call duws_fnc_random_name;
                 PosOfCase5Mission = _foundSafepos;
-    
+
                 _missionArray = [
                     [(_foundSafepos select 0)+(random _radius)-(random _radius),(_foundSafepos select 1)+(random _radius)-(random _radius)],
                     {_handle = [PosOfCase5Mission] spawn duws_fnc_sabotage_mission; _handle = [] spawn duws_fnc_missionTimer},
@@ -172,7 +172,7 @@ while {_counter < 6;} do {
         _counter = _counter + 1;
         _kibot_pos_array_missionPos = _kibot_pos_array_missionPos + [_foundSafePos];
     };
-};    
+};
 
 endLoadingScreen;
 
