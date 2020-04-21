@@ -20,6 +20,20 @@ class Params {
         default = 1;
     };
 
+    class DeadUnitsRemovalTime {
+        title = "Dead Units Removal Time";
+        values[] = {600, 1200};
+        texts[] = {"10 min", "20 min"};
+        default = 1200;
+    };
+
+    class MissionCooldownTime {
+        title = "Mission Cooldown Time";
+        values[] = {120, 300, 480, 600};
+        texts[] = {"2min", "5min", "8min", "10 min"};
+        default = 60;
+    };
+
     #define DEBUGCONSOLE_DEFAULT 0
 	#include "paramDebugConsole.hpp"
 
