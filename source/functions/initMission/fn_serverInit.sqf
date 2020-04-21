@@ -211,6 +211,7 @@ addMissionEventHandler ["HandleDisconnect", {
         _slot_name = vehicleVarName _unit;
         if (!(_slot_name in game_master)) then {
             game_master pushBack _slot_name;
+            publicVariable "game_master";
         };
     };
     true;
