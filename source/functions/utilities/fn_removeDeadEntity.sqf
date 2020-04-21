@@ -6,6 +6,6 @@
 
 params ["_corpse"];
 private _time = DUWS_Dead_Units_Removal_Time;
-sleep _time;
+sleep 600;
 deleteVehicle _corpse;
 true;
