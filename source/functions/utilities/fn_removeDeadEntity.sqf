@@ -7,6 +7,5 @@
 params ["_corpse"];
 _time = DUWS_Dead_Units_Removal_Time;
 sleep DUWS_Dead_Units_Removal_Time;
-systemChat "Removing entity..." + (name _corpse);
 deleteVehicle _corpse;
 true;
