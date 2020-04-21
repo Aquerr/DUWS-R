@@ -190,7 +190,36 @@ if (isNil "Array_of_FOBname") then {
 publicVariable "Array_of_FOBS";
 publicVariable "Array_of_FOBname";
 
-game_master = ["player1"];publicVariable "game_master";
+game_master = ["player1"];
+publicVariable "game_master";
+
+addMissionEventHandler ["EntityRespawned", {
+    params ["_entity", "_corpse"];
+    if ((isPlayer _entity) and (leader group _entity == leader _entity)) then {
+        _slot_name = vehicleVarName _entity;
+        if (!(_slot_name in game_master)) then {
+            game_master pushBack _slot_name;
+            publicVariable "game_master";
+        };
+    };
+    true;
+}];
+
+addMissionEventHandler ["HandleDisconnect", {
+    params ["_unit", "_id", "_uid", "_name"];
+    if (leader group _unit == leader _unit) then {
+        _slot_name = vehicleVarName _unit;
+        if (!(_slot_name in game_master)) then {
+            game_master pushBack _slot_name;
+        };
+    };
+    true;
+}];
+
+addMissionEventHandler ["EntityKilled", {
+    params ["_unit", "_killer", "_instigator", "_useEffects"];
+    [_unit] remoteExecCall ["duws_fnc_removeDeadEntity", 0];
+}];
 
  waitUntil {chosen_settings && createzone_server};
 
