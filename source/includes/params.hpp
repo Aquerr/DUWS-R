@@ -22,8 +22,8 @@ class Params {
 
     class DeadUnitsRemovalTime {
         title = "Dead Units Removal Time";
-        values[] = {600, 1200};
-        texts[] = {"10 min", "20 min"};
+        values[] = {60, 120, 600, 1200};
+        texts[] = {"1 min", "2 min", "10 min", "20 min"};
         default = 1200;
     };
 

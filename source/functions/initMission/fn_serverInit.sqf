@@ -236,7 +236,7 @@ addMissionEventHandler ["HandleDisconnect", {
 
 addMissionEventHandler ["EntityKilled", {
     params ["_unit", "_killer", "_instigator", "_useEffects"];
-    [_unit] remoteExecCall ["duws_fnc_removeDeadEntity", 0];
+    [_unit] spawn duws_fnc_removeDeadEntity;
 }];
 
  waitUntil {chosen_settings && createzone_server};
