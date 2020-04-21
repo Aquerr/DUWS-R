@@ -31,7 +31,7 @@ class Params {
         title = "Mission Cooldown Time";
         values[] = {120, 300, 480, 600};
         texts[] = {"2min", "5min", "8min", "10 min"};
-        default = 60;
+        default = 300;
     };
 
     #define DEBUGCONSOLE_DEFAULT 0
