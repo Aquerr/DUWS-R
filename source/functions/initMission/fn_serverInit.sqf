@@ -236,7 +236,10 @@ addMissionEventHandler ["HandleDisconnect", {
 
 addMissionEventHandler ["EntityKilled", {
     params ["_unit", "_killer", "_instigator", "_useEffects"];
-    [_unit] spawn duws_fnc_removeDeadEntity;
+    [_unit] spawn {
+        params [_corpse];
+        [_corpse] spawn duws_fnc_removeDeadEntity;
+    }; //Not working :(
 }];
 
  waitUntil {chosen_settings && createzone_server};
