@@ -2,7 +2,8 @@ params ["_place","_points","_markername","_markername2","_triggerPos"];
 
 amount_zones_captured = amount_zones_captured + 1;
 publicVariable "amount_zones_captured";
-["us_takencontrol",[_place]] call bis_fnc_showNotification;
+[["us_takencontrol", [_place]], "bis_fnc_showNotification", true, true] call BIS_fnc_MP;
+//["us_takencontrol",[_place]] call bis_fnc_showNotification;
 
 // TELL THE ZONE IS UNDER BLU CONTROL
 WARCOM_zones_controled_by_BLUFOR = WARCOM_zones_controled_by_BLUFOR + [_triggerPos];
@@ -13,7 +14,7 @@ _index = 0;
     if ((_x select 0 == _triggerPos select 0) && (_x select 1 == _triggerPos select 1) && (_x select 2 == _triggerPos select 2)) exitWith {
         WARCOM_zones_controled_by_OPFOR set [_index,-1];
         WARCOM_zones_controled_by_OPFOR = WARCOM_zones_controled_by_OPFOR - [-1];
-    }; 
+    };
     _index = _index + 1;
 } forEach WARCOM_zones_controled_by_OPFOR;
 
