@@ -5,7 +5,7 @@
 */
 
 params ["_corpse"];
-private _time = DUWS_Dead_Units_Removal_Time;
-sleep _time;
+_time = DUWS_Dead_Units_Removal_Time;
+sleep DUWS_Dead_Units_Removal_Time;
+systemChat "Removed entity " + (str _corpse);
 deleteVehicle _corpse;
-true;

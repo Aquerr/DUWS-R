@@ -97,8 +97,11 @@ if (isMultiplayer) then {
         "finishedMissionsNumber" addPublicVariableEventHandler {[] call duws_fnc_persistent_stats_missions_total;}; // change the shown CP for request dialog
     };
 
-    player globalChat format ["gamemaster: %1", game_master];
-    player globalChat format ["HQ_pos_found_generated: %1", HQ_pos_found_generated];
+    [(format ["Game Master: %1", game_master]), "globalChat", true, true] call BIS_fnc_MP;
+    [(format ["HQ_pos_found_generated: %1", HQ_pos_found_generated]), "globalChat", true, true] call BIS_fnc_MP;
+
+    //player globalChat format ["gamemaster: %1", game_master];
+    //player globalChat format ["HQ_pos_found_generated: %1", HQ_pos_found_generated];
 
     if (!isDedicated && !HQ_pos_found_generated) then { // SERVER INIT
         if (((vehiclevarname player) in game_master)) then {
@@ -250,6 +253,11 @@ for[{_x = 2},{_x <= 20},{_x = _x + 1}] do {
 
 
 _dynam = [player,"DynamicSupportMenu"] call BIS_fnc_addCommMenuItem;
+
+
+if (vehicleVarName player in game_master) then {
+    [player, "DUWSAdminMenu"] call BIS_fnc_addCommMenuItem;
+};
 
 //Loading player position and gear.
 //TODO: Add bought supports.
