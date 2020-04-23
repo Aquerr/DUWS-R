@@ -234,14 +234,27 @@ addMissionEventHandler ["HandleDisconnect", {
     true;
 }];
 
-addMissionEventHandler ["EntityKilled", {
-    params ["_unit", "_killer", "_instigator", "_useEffects"];
-    [_unit] spawn {
-        params ["_one"];
-        systemChat ("Preparing..." + (str _one));
-        [_one] spawn duws_fnc_removeDeadEntity;
-    };
-}];
+//addMissionEventHandler ["EntityKilled", {
+//    params ["_unit", "_killer", "_instigator", "_useEffects"];
+//    [_unit] call {
+//        params ["_one"];
+//        [("Removing..." + (str _one))] remoteExec ["systemChat", 0];
+//        [_one] remoteSp duws_fnc_removeDeadEntity;
+//    };
+//}];
+
+//Dead entity removal task
+//TODO: Fix this code...
+//[] spawn {
+//    ["Started Dead Units Removal Task", "systemChat", true, true] call BIS_fnc_MP;
+//    waitUntil {
+//        _until = diag_tickTime + (DUWS_Dead_Units_Removal_Time);
+//        [("Removing time: " + (str _until)), "systemChat", true, true] call BIS_fnc_MP;
+//        waitUntil {sleep 1; diag_tickTime > _until;};
+//        call duws_fnc_removeDeadEntities;
+//        false;
+//    };
+//};
 
  waitUntil {chosen_settings && createzone_server};
 

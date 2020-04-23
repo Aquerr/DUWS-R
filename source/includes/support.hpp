@@ -13,7 +13,7 @@ class CfgCommunicationMenu
     class DUWSAdminMenu
     {
         text = "DUWS-R Admin";
-        submenu = "";
+        submenu = "#USER:ADMIN_MENU";
         expression = "";
         icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
         cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";

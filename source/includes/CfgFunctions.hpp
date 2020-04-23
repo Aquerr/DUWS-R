@@ -45,6 +45,8 @@ class CfgFunctions
             // [] call duws_fnc_convertCPtoAP
             class dynamic_menu {};
             // [???] spawn duws_fnc_dynamic_menu
+            class dynamic_admin_menu {};
+            // [] spawn duws_fnc_dynamic_menu
             class dyn_music_init
             {
                 postInit = 1;
@@ -104,6 +106,8 @@ class CfgFunctions
             // [] call duws_fnc_groupReset
             class removeDeadEntity;
             // [unit] spawn duws_fnc_removeDeadEntity
+            class removeDeadEntities;
+            // [] spawn duws_fnc_removeDeadEntities
         };
 
         class WARCOM

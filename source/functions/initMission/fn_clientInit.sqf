@@ -251,12 +251,21 @@ for[{_x = 2},{_x <= 20},{_x = _x + 1}] do {
     };
 };
 
+//Prepare admin menu
+[] call duws_fnc_dynamic_admin_menu;
+
+//ADMIN_MENU =
+//[
+//    ["Admin Menu",false],
+//    ["Delete Dead Units", [2], "", -5, [["expression", "[] spawn duws_fnc_removeDeadEntities"]], "1", "1"]
+//];
+
 
 _dynam = [player,"DynamicSupportMenu"] call BIS_fnc_addCommMenuItem;
 
 
 if (vehicleVarName player in game_master) then {
-    [player, "DUWSAdminMenu"] call BIS_fnc_addCommMenuItem;
+    _dynamAdmin = [player, "DUWSAdminMenu"] call BIS_fnc_addCommMenuItem;
 };
 
 //Loading player position and gear.
